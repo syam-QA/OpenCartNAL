@@ -4,6 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import com.aventstack.chaintest.plugins.ChainTestListener;
 import com.qa.opencart.basepackage.BaseTest;
 import com.qa.opencart.constants.AppConstant;
 import com.qa.opencart.constants.AppError;
@@ -14,6 +15,7 @@ public class LoginPageTest extends BaseTest
 	@Test
 	public void loginPageTitleTest()
 	{
+		ChainTestListener.log("Verifying the Loginpage Title");
 		String actualTitle=loginpage.getLoginPageTitle();
 		Assert.assertEquals(actualTitle, AppConstant.LOCAL_PAGE_TITLE,AppError.TITLE_NOT_FOUND_ERROR);
 	}

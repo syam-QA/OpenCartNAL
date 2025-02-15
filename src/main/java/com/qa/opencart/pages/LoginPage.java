@@ -3,6 +3,7 @@ package com.qa.opencart.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+import com.aventstack.chaintest.plugins.ChainTestListener;
 import com.qa.opencart.constants.AppConstant;
 import com.qa.opencart.util.ElementUtil;
 public class LoginPage 
@@ -30,6 +31,7 @@ public class LoginPage
 	 //String loginpagetitle=driver.getTitle();
 	 String title=elementutil.waitForTitleIs(AppConstant.LOCAL_PAGE_TITLE, AppConstant.DEFAULT_TIME_OUT);
 	 System.out.println("Login Page tiltle : " +title);
+	 ChainTestListener.log("Login Page tiltle : " +title);
 	 return title ;
 	}
 	public String getLoginPageURL()
