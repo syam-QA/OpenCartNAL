@@ -5,10 +5,14 @@ import java.util.Properties;
 import org.openqa.selenium.WebDriver;
 
 import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Listeners;
+import org.testng.ITestResult;
+import org.testng.annotations.AfterMethod;
+//import org.testng.annotations.Listeners;
 import org.testng.annotations.AfterTest;
 
 import com.aventstack.chaintest.plugins.ChainTestListener;
+import com.aventstack.chaintest.service.ChainPluginService;
+//import com.aventstack.chaintest.plugins.ChainTestListener;
 import com.qa.opencart.factory.DriverFactory;
 import com.qa.opencart.pages.CommonPages;
 import com.qa.opencart.pages.HomePage;
@@ -16,7 +20,7 @@ import com.qa.opencart.pages.LoginPage;
 import com.qa.opencart.pages.ProductDetailsPage;
 import com.qa.opencart.pages.SearcResultPage;
 
-@Listeners(ChainTestListener.class)
+//@Listeners(ChainTestListener.class)
 public class BaseTest 
 {
 	WebDriver driver;
@@ -37,7 +41,20 @@ public class BaseTest
 		driver=df.initBrowser(prop);
 		loginpage =new LoginPage(driver);
 		commonPage =new CommonPages(driver);
+		
+		ChainPluginService.getInstance().addSystemInfo("Owner#", "SyamKuamr");
+		ChainPluginService.getInstance().addSystemInfo("HeadLess#", prop.getProperty("headless"));
+		ChainPluginService.getInstance().addSystemInfo("Incognito", prop.getProperty("incognito"));
 		//homepage=new HomePage(driver);
+	}
+	@AfterMethod
+	public void attchScrrenshot(ITestResult result)
+	{
+		if(!result.isSuccess())
+		{
+			ChainTestListener.embed(DriverFactory.getScreenshotFile(), "image/png");
+		}
+		
 	}
 	@AfterTest
 	public void tearDoown()	{

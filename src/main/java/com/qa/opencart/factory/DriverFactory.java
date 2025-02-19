@@ -1,16 +1,22 @@
 package com.qa.opencart.factory;
 
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
+
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.io.FileHandler;
 import org.openqa.selenium.safari.SafariDriver;
+
 
 import com.qa.opencart.constants.AppConstant;
 import com.qa.opencart.excepection.FrameWorkExcepection;
@@ -65,6 +71,7 @@ public class DriverFactory
 	 * */
 	public static WebDriver getDriver()
 	{
+		
 		return tlDriver.get();
 	}
 	//This Method is used to init the properties from .properties file
@@ -113,5 +120,39 @@ public class DriverFactory
 			 
 				return prop;
 		 }
+	 
+	 public static String getScreenshot() {
+        File scrFile=((TakesScreenshot)getDriver()).getScreenshotAs(OutputType.FILE);	
+       String path= System.getProperty("user.dir")+ "/screenshot/" + "_" +System.currentTimeMillis()+".png";
+       File destination = new File (path);
+       
+       try {
+       FileHandler.copy(scrFile, destination);
+       
+       }
+       catch(IOException e) {
+       e.printStackTrace();
+       }
+       return path;
+       }
+	 public static File getScreenshotFile() {
+	        File scrFile=((TakesScreenshot)getDriver()).getScreenshotAs(OutputType.FILE);	
+	     
+	       return scrFile;
+	       }
+       	 
+	 public static byte[] getScreenshotByte() {
+		 return ((TakesScreenshot)getDriver()).getScreenshotAs(OutputType.BYTES);	
+	     
+	       
+	       }
+	 public static String getScreenshotBase64() {
+	        return ((TakesScreenshot)getDriver()).getScreenshotAs(OutputType.BASE64);	
+	     
+	       }
+	 
+	 
+	 
 	 } 
+
 
