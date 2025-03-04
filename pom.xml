@@ -74,7 +74,23 @@
 			<artifactId>chaintest-testng</artifactId>
 			<version>1.0.11</version>
 		</dependency>
+<dependency>
+			<groupId>io.qameta.allure</groupId>
+			<artifactId>allure-testng</artifactId>
+			<version>2.23.0</version>
+		</dependency>
 
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjweaver</artifactId>
+			<version>${aspectj.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>2.24.3</version>
+		</dependency>
 
 	</dependencies>
 

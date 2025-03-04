@@ -124,6 +124,7 @@ public class DriverFactory
 	 public static String getScreenshot() {
         File scrFile=((TakesScreenshot)getDriver()).getScreenshotAs(OutputType.FILE);	
        String path= System.getProperty("user.dir")+ "/screenshot/" + "_" +System.currentTimeMillis()+".png";
+       
        File destination = new File (path);
        
        try {

@@ -52,6 +52,7 @@ public class BaseTest
 	{
 		if(!result.isSuccess())
 		{
+			System.out.println();
 			ChainTestListener.embed(DriverFactory.getScreenshotFile(), "image/png");
 		}
 		
