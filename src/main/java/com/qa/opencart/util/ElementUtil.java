@@ -24,6 +24,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.qa.opencart.factory.DriverFactory;
 
+import io.qameta.allure.Step;
+
 public class ElementUtil 
 {
 	private WebDriver driver;
@@ -54,7 +56,7 @@ private void highlightELement(WebElement element)
 	public void doClick(String locatorType, String locatorValue) {
 		getElement(getLocator(locatorType, locatorValue)).click();
 	}
-
+@Step("Fill value :{1} into the webelement :{0}")
 	public void doSendKeys(By locator, CharSequence... value) {
 		nullCheck(value);
 		WebElement element =getElement(locator);
@@ -92,7 +94,7 @@ private void highlightELement(WebElement element)
 		nullCheck(propName);
 		return getElement(locator).getDomProperty(propName);
 	}
-
+@Step("element {0} is Dispaled")
 	public boolean doIsElementDisplayed(By locator) {
 		try {
 			return getElement(locator).isDisplayed();
@@ -126,7 +128,7 @@ private void highlightELement(WebElement element)
 			return false;
 		}
 	}
-
+ @Step("Get webelement using locator : {0} " )
 	public WebElement getElement(By locator) {
 		//return waitForelementVisible(locator, 10);//default time = 10 secs
 		
@@ -396,6 +398,7 @@ private void highlightELement(WebElement element)
 	 * @param timeOut
 	 * @return
 	 */
+	@Step("Waiting for the webElelemt : {0} and timeout :{1}")
 	public WebElement waitForElementVisible(By locator, long timeOut) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
 		WebElement element=wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
@@ -504,6 +507,7 @@ private void highlightELement(WebElement element)
 	 * @param timeOut
 	 * @return
 	 */
+	@Step("Waiti for the Title is :{0}")
 	public String waitForTitleIs(String title, long timeOut) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeOut));
 
