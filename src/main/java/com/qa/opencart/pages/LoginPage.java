@@ -6,6 +6,8 @@ import org.openqa.selenium.WebDriver;
 import com.aventstack.chaintest.plugins.ChainTestListener;
 import com.qa.opencart.constants.AppConstant;
 import com.qa.opencart.util.ElementUtil;
+
+import io.qameta.allure.Step;
 public class LoginPage 
 {
 
@@ -25,7 +27,7 @@ public class LoginPage
 	private By forgotpwdLink=By.linkText("Forgotten Password");
 	
 	//public methods used for the validation
-	
+	@Step("getLoginPageTitle")
 	public String getLoginPageTitle()
 	{
 	 //String loginpagetitle=driver.getTitle();
@@ -34,6 +36,7 @@ public class LoginPage
 	 ChainTestListener.log("Login Page tiltle : " +title);
 	 return title ;
 	}
+	@Step(" get login in Page URl")
 	public String getLoginPageURL()
 	{
 	//String loginPageURL=	driver.getCurrentUrl();
@@ -41,17 +44,18 @@ public class LoginPage
 	System.out.println("Login page URL : " +url);	
 	return url;
 	}
-	
+	@Step("Forgot PED Link Displayed ")
 	public boolean isForgotPWDLinkDispaled()
 	{
 		return elementutil.doIsElementDisplayed(forgotpwdLink);
 		//it will return true or false by check the forgot password link is displayed or not
 		//return driver.findElement(forgotpwdLink).isDisplayed();
 	}
+	@Step(" Login with username:{0} and password : {1}")
 	public HomePage doLogin(String userID,String PWD)
 	{
 		//driver.findElement(UserId).sendKeys(userID);
-		elementutil.waitForElementPresence(UserId, AppConstant.SHORT_TIME_OUT).sendKeys(userID);;
+		elementutil.waitForElementVisible(UserId, AppConstant.SHORT_TIME_OUT).sendKeys(userID);
 		//driver.findElement(pwd).sendKeys(PWD);
 		elementutil.doSendKeys(pwd,PWD);
 		//driver.findElement(loginButton).click();
