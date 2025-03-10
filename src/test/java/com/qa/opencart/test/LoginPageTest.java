@@ -69,7 +69,7 @@ public class LoginPageTest extends BaseTest
 	}
 	@DataProvider
 	public Object[][] getFooterData()
-	{
+	{System.out.println();
 		return new Object[][] {
 			{"About Us"},
 			{"Contact Us"},
