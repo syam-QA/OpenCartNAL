@@ -62,7 +62,7 @@ public class LoginPageTest extends BaseTest
 	}
 	@Description("Checking the Company Logo  ")
 	@Severity(SeverityLevel.CRITICAL)
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void logoTest()
 	{
 	Assert.assertTrue(commonPage.isLogoDisplayed(),AppError.LOGO_NOT_FOUND_ERROR);
