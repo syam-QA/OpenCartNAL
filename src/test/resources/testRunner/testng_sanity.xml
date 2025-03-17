@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Opencart App Test sanity Suite" verbose="3" parallel="tests" thread-count="1">
+
+<listeners>
+	<listener 
+	class-name="com.aventstack.chaintest.plugins.ChainTestListener"/>
+	<listener 
+	class-name="com.qa.opencart.listeners.TestAllureListener"/>
+</listeners>
+
+
+	<test name="Login Test_chrome">
+		<classes>
+			<class name="com.qa.opencart.test.LoginPageTest" />
+		</classes>
+	</test>
+
+
+
+
+</suite>

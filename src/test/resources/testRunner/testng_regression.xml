@@ -23,7 +23,7 @@
 			<class name="com.qa.opencart.test.LoginPageTest" />
 		</classes>
 	</test>
-<test name="Login Test_chrome">
+<test name="Login Test_firefox">
 	<parameter name="browser" value="firefox"/>
 		<classes>
 			<class name="com.qa.opencart.test.LoginPageTest" />
