@@ -154,6 +154,7 @@ public class DriverFactory
 	       
 	       }
 	 public static String getScreenshotBase64() {
+		 System.out.println("");
 	        return ((TakesScreenshot)getDriver()).getScreenshotAs(OutputType.BASE64);	
 	     
 	       }
