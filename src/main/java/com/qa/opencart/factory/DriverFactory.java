@@ -37,10 +37,14 @@ public class DriverFactory
 	//browser launch feature with switch case 
 	
 	public static ThreadLocal<WebDriver> tlDriver=new ThreadLocal<WebDriver>();
+	private static final Logger log = LogManager.getLogger(DriverFactory.class);
+	 
+	@Step("Initializing WebDriver for browser: {0}")
 	public WebDriver initBrowser(Properties prop)
 	{
 		String Browsertype= prop.getProperty("browser");
-		System.out.println("Browser type is :" +Browsertype);
+		//System.out.println("Browser type is :" +Browsertype);
+		log.info("browser name is : " +Browsertype);
 		highlight=prop.getProperty("highlight");
 		optionManager = new OptionManager(prop);
 		switch(Browsertype.trim().toLowerCase())
@@ -64,7 +68,9 @@ public class DriverFactory
 			//driver=new SafariDriver();
 			break;
 		default:
-			System.out.println("PLease enter a proper Browser type ");
+			//System.out.println("PLease enter a proper Browser type ");
+			log.error( "Please select a browser");
+
 			throw new FrameWorkExcepection("invalid browser type");
 		}
 	getDriver().manage().deleteAllCookies();
@@ -85,13 +91,15 @@ public class DriverFactory
 	 {
 		 prop = new Properties();
 		 String envName =System.getProperty("env");
-		 System.out.println("Running the test suiton env : " +envName);
+		// System.out.println("Running the test suiton env : " +envName);
+		 log.info(" Running test suit on env :"+envName);
 		 FileInputStream ip= null;
 		 
 		 try {
 		 if(envName==null)
 		 {
-			 System.out.println("NO env is paased ,hence running the test suit on the qa env");
+			 //System.out.println("NO env is paased ,hence running the test suit on the qa env");
+			 log.error("NO env is paased ,hence running the test suit on the qa env");
 			 ip= new FileInputStream(AppConstant.CONIF_QA_PROP_FILE_PATH);
 		 }
 		 else 
@@ -109,6 +117,7 @@ public class DriverFactory
 		break;
 		
 			default:
+				log.error("Pls pass the right env name..." +envName);
 				throw new FrameWorkExcepection("=== invalid env provide a valid env");
 		
 		          }

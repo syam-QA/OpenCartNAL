@@ -2,6 +2,8 @@ package com.qa.opencart.factory;
 
 import java.util.Properties;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
@@ -13,7 +15,7 @@ public class OptionManager
 	private ChromeOptions co;
 	private FirefoxOptions fo;
 	private EdgeOptions eo;
-
+	private static final Logger log = LogManager.getLogger(OptionManager.class);
 public OptionManager(Properties prop)
 {
 	this.prop=prop;
@@ -23,12 +25,15 @@ public OptionManager(Properties prop)
     	co=new ChromeOptions();
     	if(Boolean.parseBoolean(prop.getProperty("headless")))
     	{
-    		System.out.println("Running in HeadLess mode");
+    		//System.out.println("Running in HeadLess mode");
+    		log.info("=== Running in chrome browser HeadLess Mode===");
     		co.addArguments("--headless");
     	}
     	if(Boolean.parseBoolean(prop.getProperty("incognito")))
     	{
-    		System.out.println("Running in incogito mode");
+    		//System.out.println("Running in incogito mode");
+    		log.info("=== Running in chrome browser incogito Mode===");
+
     		co.addArguments("--incognito");
     	}
     return co;
@@ -39,12 +44,15 @@ public OptionManager(Properties prop)
     	if(Boolean.parseBoolean(prop.getProperty("headless")))
     	{
 
-    		System.out.println("Running in HeadLess mode");
+    		//System.out.println("Running in HeadLess mode");
+    		log.info("=== Running in Firefox browser  HeadLess Mode===");
+
     		fo.addArguments("--headless");
     	}
     	if(Boolean.parseBoolean(prop.getProperty("incognito")))
     	{
-    		System.out.println("Running in incogito mode");
+    		//System.out.println("Running in incogito mode");
+    		log.info("=== Running in firefox browser incogito Mode===");
     		fo.addArguments("--incognito");
     	}
     return fo;
@@ -55,12 +63,16 @@ public OptionManager(Properties prop)
     	if(Boolean.parseBoolean(prop.getProperty("headless")))
     	{
 
-    		System.out.println("Running in HeadLess mode");
+//    		System.out.println("Running in HeadLess mode");
+    		log.info("=== Running in edge HeadLess Mode===");
+
     		eo.addArguments("--headless");
     	}
     	if(Boolean.parseBoolean(prop.getProperty("incognito")))
     	{
-    		System.out.println("Running in incogito mode");
+    		//System.out.println("Running in incogito mode");
+    		log.info("=== Running in edge browser incognito Mode===");
+
     		eo.addArguments("--inPrivate");
     	}
     return eo;
