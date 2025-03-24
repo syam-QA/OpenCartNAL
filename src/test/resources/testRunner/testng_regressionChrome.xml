@@ -16,21 +16,21 @@
 		</classes>
 	</test>
 <test name="Login Test_edge">
-	<parameter name="browser" value="edge"/>
+	<parameter name="browser" value="chrome"/>
 		<classes>
 			<class name="com.qa.opencart.test.LoginPageTest" />
 		</classes>
 	</test>
 <test name="Login Test_firefox">
-	<parameter name="browser" value="firefox"/>
+	<parameter name="browser" value="chrome"/>
 		<classes>
 			<class name="com.qa.opencart.test.LoginPageTest" />
 		</classes>
 	</test>
 
 
-<!--	<test name="Home Page Test">
-		
+<test name="Home Page Test">
+		<parameter name="browser" value="chrome"/>
 		<classes>
 			<class name="com.qa.opencart.test.HomePageTest" />
 		</classes>
@@ -38,9 +38,10 @@
 
 
 	<test name="Product Info Page Test">
+		<parameter name="browser" value="chrome"/>
 		<classes>
 			<class name="com.qa.opencart.test.ProductInfoPageTest" />
 		</classes>
-	</test>-->
+	</test>
 
 </suite>

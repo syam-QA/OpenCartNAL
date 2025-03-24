@@ -5,6 +5,7 @@ import java.util.Properties;
 import org.openqa.selenium.WebDriver;
 
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 //import org.testng.annotations.Listeners;
@@ -33,11 +34,16 @@ public class BaseTest
 	protected HomePage homepage;
 	protected SearcResultPage searchresult;
 	protected ProductDetailsPage productdetails;
+	@Parameters({"browser"})
 	@BeforeTest
-	public void setup()
+	public void setup(String broswerName)
 	{    
 		df=new DriverFactory();
 		prop =df.initProp();
+		if(broswerName !=null ) {
+			prop.setProperty("browser", broswerName);
+		}
+				
 		driver=df.initBrowser(prop);
 		loginpage =new LoginPage(driver);
 		commonPage =new CommonPages(driver);
